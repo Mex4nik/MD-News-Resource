@@ -29,6 +29,19 @@ export class User extends Model<User, UserCreationAttrs> {
     type: DataType.STRING,
     unique: true,
     allowNull: false,
+    validate: {
+      len: [4, 255],
+    },
+  })
+  username: string;
+
+  @Column({
+    type: DataType.STRING,
+    unique: true,
+    allowNull: false,
+    validate: {
+      len: [4, 255],
+    },
   })
   email: string;
 
