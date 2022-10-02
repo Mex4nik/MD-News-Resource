@@ -11,6 +11,18 @@ export class ArticlesService {
     private fileService: FilesService,
   ) {}
 
+  async getOneById(id) {
+    const article = await this.articleRepository.findByPk(id);
+    return article;
+  }
+
+  async getAll() {
+    const articles = await this.articleRepository.findAll({
+      include: { all: true },
+    });
+    return articles;
+  }
+
   async create(dto: CreateArticleDto, image: any) {
     try {
       const fileName = await this.fileService.createFile(image);

@@ -10,6 +10,19 @@ export class CommentsService {
     @InjectModel(Comment) private commentRepository: typeof Comment,
   ) {}
 
+  async getOneById(id) {
+    const comment = await this.commentRepository.findByPk(id);
+    if (!comment) return { message: "Comment isn't exist" };
+    return comment;
+  }
+
+  async getAll() {
+    const comments = await this.commentRepository.findAll({
+      include: { all: true },
+    });
+    return comments;
+  }
+
   async create(dto: CreateCommentDto) {
     try {
       const comment = await this.commentRepository.create(dto);

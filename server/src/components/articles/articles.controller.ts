@@ -1,6 +1,8 @@
 import {
   Body,
   Controller,
+  Get,
+  Param,
   Post,
   UploadedFile,
   UseGuards,
@@ -14,6 +16,16 @@ import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 @Controller('articles')
 export class ArticlesController {
   constructor(private articleService: ArticlesService) {}
+
+  @Get(':id')
+  getOne(@Param() params) {
+    return this.articleService.getOneById(params.id);
+  }
+
+  @Get()
+  getAll() {
+    return this.articleService.getAll();
+  }
 
   @Post()
   @UseGuards(JwtAuthGuard)
