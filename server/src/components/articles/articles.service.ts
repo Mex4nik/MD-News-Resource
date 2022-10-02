@@ -12,11 +12,16 @@ export class ArticlesService {
   ) {}
 
   async create(dto: CreateArticleDto, image: any) {
-    const fileName = await this.fileService.createFile(image);
-    const article = await this.articleRepository.create({
-      ...dto,
-      mainImage: fileName,
-    });
-    return article;
+    try {
+      const fileName = await this.fileService.createFile(image);
+      const article = await this.articleRepository.create({
+        ...dto,
+        image: fileName,
+      });
+      return article;
+    } catch (error) {
+      if (error.original.detail.includes('title'))
+        return { message: 'Article with this title already exists' };
+    }
   }
 }

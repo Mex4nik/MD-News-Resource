@@ -29,7 +29,6 @@ export class JwtAuthGuard implements CanActivate {
       req.user = user;
       return true;
     } catch (error) {
-      console.log(error);
       throw new UnauthorizedException({ message: 'User is not authorized' });
     }
   }

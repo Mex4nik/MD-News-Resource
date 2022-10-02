@@ -1,26 +1,24 @@
 // import { ApiProperty } from '@nestjs/swagger';
 import {
   BelongsTo,
-  BelongsToMany,
   Column,
   DataType,
   ForeignKey,
   Model,
   Table,
 } from 'sequelize-typescript';
-import { Role } from 'src/components/roles/role.model';
-import { UserRoles } from 'src/components/roles/user-roles.model';
 import { User } from 'src/components/users/user.model';
+import { Article } from '../articles/articles.model';
 
-interface ArticleCreationAttrs {
-  title: string;
+interface CommentCreationAttrs {
   content: string;
-  image: string;
-  authorId: number;
+  likes: number;
+  articleId: number;
+  userId: number;
 }
 
-@Table({ tableName: 'articles' })
-export class Article extends Model<Article, ArticleCreationAttrs> {
+@Table({ tableName: 'comments' })
+export class Comment extends Model<Comment, CommentCreationAttrs> {
   @Column({
     type: DataType.INTEGER,
     unique: true,
@@ -31,19 +29,16 @@ export class Article extends Model<Article, ArticleCreationAttrs> {
 
   @Column({
     type: DataType.STRING,
-    unique: true,
-    allowNull: false,
-  })
-  title: string;
-
-  @Column({
-    type: DataType.STRING,
     allowNull: false,
   })
   content: string;
 
-  @Column({ type: DataType.STRING })
-  image: string;
+  @ForeignKey(() => Article)
+  @Column({ type: DataType.INTEGER })
+  articleId: number;
+
+  @BelongsTo(() => Article)
+  article: Article;
 
   @ForeignKey(() => User)
   @Column({ type: DataType.INTEGER })

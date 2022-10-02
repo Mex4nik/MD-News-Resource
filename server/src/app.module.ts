@@ -10,6 +10,8 @@ import { UsersModule } from './components/users/users.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import * as path from 'path';
 import { ArticlesModule } from './components/articles/articles.module';
+import { FilesModule } from './components/files/files.module';
+import { CommentsModule } from './components/comments/comments.module';
 
 @Module({
   controllers: [],
@@ -31,10 +33,12 @@ import { ArticlesModule } from './components/articles/articles.module';
       models: [User, Role, UserRoles],
       autoLoadModels: true,
     }),
+    FilesModule,
     UsersModule,
     RolesModule,
     AuthModule,
     ArticlesModule,
+    CommentsModule,
   ],
 })
 export class AppModule {}
