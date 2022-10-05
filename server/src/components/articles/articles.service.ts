@@ -25,6 +25,9 @@ export class ArticlesService {
 
   async create(dto: CreateArticleDto, image: any) {
     try {
+      // Check on category
+      if (!dto.categoryId) throw new Error('Category id is mandatory.');
+
       const fileName = await this.fileService.createFile(image);
       const article = await this.articleRepository.create({
         ...dto,
@@ -32,8 +35,12 @@ export class ArticlesService {
       });
       return article;
     } catch (error) {
-      if (error.original.detail.includes('title'))
+      if (!error?.original) return { message: error.message };
+
+      const errorDetail = error.original.detail;
+      if (errorDetail.includes('title'))
         return { message: 'Article with this title already exists' };
+      else return { message: errorDetail };
     }
   }
 }

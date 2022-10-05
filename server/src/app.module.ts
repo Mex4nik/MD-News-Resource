@@ -12,6 +12,7 @@ import * as path from 'path';
 import { ArticlesModule } from './components/articles/articles.module';
 import { FilesModule } from './components/files/files.module';
 import { CommentsModule } from './components/comments/comments.module';
+import { CategoriesModule } from './components/categories/categories.module';
 
 @Module({
   controllers: [],
@@ -37,6 +38,7 @@ import { CommentsModule } from './components/comments/comments.module';
     UsersModule,
     RolesModule,
     AuthModule,
+    CategoriesModule,
     ArticlesModule,
     CommentsModule,
   ],

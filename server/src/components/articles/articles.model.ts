@@ -11,11 +11,13 @@ import {
 import { Role } from 'src/components/roles/role.model';
 import { UserRoles } from 'src/components/roles/user-roles.model';
 import { User } from 'src/components/users/user.model';
+import { Category } from '../categories/categories.model';
 
 interface ArticleCreationAttrs {
   title: string;
   content: string;
   image: string;
+  categoryId: number;
   authorId: number;
 }
 
@@ -44,6 +46,13 @@ export class Article extends Model<Article, ArticleCreationAttrs> {
 
   @Column({ type: DataType.STRING })
   image: string;
+
+  @ForeignKey(() => Category)
+  @Column({ type: DataType.INTEGER })
+  categoryId: number;
+
+  @BelongsTo(() => Category)
+  category: Category;
 
   @ForeignKey(() => User)
   @Column({ type: DataType.INTEGER })
