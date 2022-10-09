@@ -17,6 +17,11 @@ export class CommentsController {
     return this.commentService.getAll();
   }
 
+  @Get('article/:id')
+  getCommentsForOneArticle(@Param() params) {
+    return this.commentService.getCommentsFromOneArticle(params.id);
+  }
+
   @Post()
   @UseGuards(JwtAuthGuard)
   createComment(@Body() dto: CreateCommentDto) {

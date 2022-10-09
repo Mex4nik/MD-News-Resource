@@ -15,5 +15,6 @@ import { AuthModule } from '../auth/auth.module';
     FilesModule,
     forwardRef(() => AuthModule),
   ],
+  exports: [CommentsService],
 })
 export class CommentsModule {}

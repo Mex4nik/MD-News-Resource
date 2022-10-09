@@ -23,6 +23,14 @@ export class CommentsService {
     return comments;
   }
 
+  async getCommentsFromOneArticle(id) {
+    const comments = await this.commentRepository.findAll({
+      where: { articleId: id },
+      include: { all: true },
+    });
+    return comments;
+  }
+
   async create(dto: CreateCommentDto) {
     try {
       const comment = await this.commentRepository.create(dto);
