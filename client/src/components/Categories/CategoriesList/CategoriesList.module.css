@@ -1,0 +1,9 @@
+.wrapper {
+    padding: 0.2rem 2rem;
+    display: flex;
+    height: 2rem;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: darkslategray;
+    color: white;
+}

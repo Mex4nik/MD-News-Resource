@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import MyButton from "../button/MyButton";
+import Button from "../Button/Button";
 import { useContext } from "react";
 import { AuthContext } from "./../../../context/index";
+import classes from './Navbar.module.css'
 
 export default function Navbar() {
 	const { isAuth, setIsAuth } = useContext(AuthContext);
@@ -13,11 +14,18 @@ export default function Navbar() {
 	};
 
 	return (
-		<div className="navbar">
-			<button onClick={logout}>Log out</button>
-			<div className="navbar__links">
-				<Link to="/about">About site</Link>
-				<Link to="/posts">Posts</Link>
+		<div className={classes.navbar}>
+			<div className={classes.navbar__links}>
+				<Link to="/articles">Home</Link>
+				{/* <Link to="/about">About site</Link> */}
+			</div>
+			<div className={classes.navbar__controls}>
+				{isAuth
+					? <div>
+						<Button onClick={logout}>Logout</Button>
+					</div>
+					: <Link to="/login">Login</Link>
+				}
 			</div>
 		</div>
 	);

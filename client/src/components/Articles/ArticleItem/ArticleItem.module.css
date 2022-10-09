@@ -1,0 +1,30 @@
+.item {
+  width: 45%;
+  padding: 1rem;
+  border: 1px solid #28a745;
+  cursor: pointer;
+}
+
+.title {
+  padding: 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.categoryName {
+  padding: 0.3rem;
+  background-color: darkslategray;
+  border-radius: .25rem;
+  color: white;
+  font-weight: 400;
+}
+
+.content {
+	padding: 0.5rem 0;
+	color: gray;
+}
+
+.image {
+	width: 100%;
+}

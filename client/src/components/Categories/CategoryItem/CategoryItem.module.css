@@ -1,0 +1,14 @@
+.item {
+	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+		border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+	padding: 0.5rem;
+	border-radius: 0.25rem;
+	font-weight: 400;
+  cursor: pointer;
+}
+
+.item:hover {
+	color: #fff;
+	background-color: #3b6c6c;
+	border-color: #3b6c6c;
+}

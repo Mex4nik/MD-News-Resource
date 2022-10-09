@@ -1,0 +1,1 @@
+export const APIHost = 'http://localhost:5000';

@@ -1,0 +1,58 @@
+.wrapper {
+
+}
+
+.title {
+    padding-bottom: 1rem;
+}
+
+.dateTime {
+    padding-bottom: 1rem;
+    color: gray;
+}
+
+.content {
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+.content__text {
+    text-align: start;
+    padding-bottom: 1rem;
+}
+
+.image {
+    max-width: 75%;
+    width: 100%;
+}
+
+.comments {
+    padding-bottom: 1rem;
+}
+
+.comment__wrapper {
+    margin-top: .5rem;
+    padding: 1rem;
+    border: 1px solid #28a745;
+    border-radius: .25rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.comment__wrapper__userdata {
+    border-bottom: 1px solid gray;
+    padding-bottom: .1rem;
+    width: fit-content;
+}
+
+.comment__wrapper__userdata__username {
+    padding-right: .5rem;
+}
+
+.comment__wrapper__userdata__date {
+    color: gray;
+}
+
+.comment__wrapper__content {
+    margin-top: .5rem;
+}

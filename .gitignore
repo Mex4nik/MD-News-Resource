@@ -4,6 +4,7 @@
 /client/dist
 /client/node_modules
 /client/public
+/Images
 
 # Logs
 logs
