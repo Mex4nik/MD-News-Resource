@@ -7,17 +7,21 @@ const ArticleItem = ({ article, category }) => {
 	const navigate = useNavigate();
 
 	return (
-		<div className={classes.item} onClick={() => navigate(`/articles/${article.id}`)}>
-			<h3 className={classes.title}>
-        <span>{article.title}</span>
-        <span className={classes.categoryName}>{category?.name || ''}</span>
-      </h3>
-			<span className={classes.content}>{article.content}</span>
+		<div
+			className={classes.item}
+			onClick={() => navigate(`/articles/${article.id}`)}
+		>
 			<img
 				src={`${APIHost}/${article.image}`}
 				alt={article.title}
 				className={classes.image}
 			/>
+			<h3 className={classes.title}>
+				<span>{article.title}</span>
+				<span className={classes.categoryName}>{category?.name || ""}</span>
+			</h3>
+			<span className={classes.content}>{article.content}</span>
+
 		</div>
 	);
 };

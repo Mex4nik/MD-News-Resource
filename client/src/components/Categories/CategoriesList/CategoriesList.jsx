@@ -8,8 +8,8 @@ const CategoriesList = () => {
 
     const fetchCategories = async () => {
         const response = await ArticleService.getAllCategories();
-        setCategories([...categories, ...response.data])    
-    }
+        setCategories(response.data)    
+    } 
 
     useEffect(() => {
         fetchCategories();

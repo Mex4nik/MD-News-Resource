@@ -17,6 +17,11 @@ export default class ArticleService {
         return response;
     }
 
+    static async getAllByCategory(categoryId) {
+        const response = await axios.get(`${APIHost}/articles/category/${categoryId}`);
+        return response;
+    }
+
     static async getCommentsByArticleId(id) {
         const response = await axios.get(`${APIHost}/comments/article/${id}`);
         return response;

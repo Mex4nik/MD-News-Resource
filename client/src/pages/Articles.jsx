@@ -9,17 +9,20 @@ const Articles = () => {
   const [articles, setArticles] = useState([]);
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [currentCategory, setCurrentCategory] = useState('');
 
 
   const fetchArticles = async () => {
-    const response = await ArticleService.getAll();
-    setArticles([...articles, ...response.data]);
+    let response;
+    if (currentCategory) response = await ArticleService.getAllByCategory(currentCategory);
+    else response = await ArticleService.getAll();
+    setArticles(response.data);
     fetchCategories();
   }
 
   const fetchCategories = async () => {
     const response = await ArticleService.getAllCategories();
-    setCategories([...categories, ...response.data])
+    setCategories(response.data)
     setIsLoading(false)
   }
 
