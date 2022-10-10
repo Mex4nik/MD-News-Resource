@@ -2,7 +2,9 @@ import {
   Body,
   Controller,
   Get,
+  Param,
   Post,
+  Query,
   UseGuards,
   UsePipes,
 } from '@nestjs/common';
@@ -13,6 +15,7 @@ import { Roles } from 'src/components/auth/roles-auth.decorator';
 import { RolesGuard } from './../auth/roles.guard';
 import { AddRoleDto } from './dto/add-role.dto';
 import { banUserDto } from './dto/ban-user.dto';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @Controller('users')
 export class UsersController {
@@ -23,11 +26,12 @@ export class UsersController {
     return this.usersService.createUser(userDto);
   }
 
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Roles('ADMIN')
   @UseGuards(RolesGuard)
   @Get()
-  getAll() {
+  getAll(@Query() query) {
+    if (query.email) return this.usersService.getUsersByEmail(query.email);
     return this.usersService.getAllusers();
   }
 

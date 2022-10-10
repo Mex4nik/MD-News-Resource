@@ -16,6 +16,14 @@ export class ArticlesService {
     return article;
   }
 
+  async getByCategoryId(categoryId) {
+    const articles = await this.articleRepository.findOne({
+      where: { categoryId },
+      include: { all: true },
+    });
+    return articles;
+  }
+
   async getAll() {
     const articles = await this.articleRepository.findAll({
       include: { all: true },

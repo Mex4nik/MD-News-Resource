@@ -39,7 +39,7 @@ export class Article extends Model<Article, ArticleCreationAttrs> {
   title: string;
 
   @Column({
-    type: DataType.STRING,
+    type: DataType.STRING(8000),
     allowNull: false,
   })
   content: string;

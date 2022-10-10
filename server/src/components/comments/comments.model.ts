@@ -28,7 +28,7 @@ export class Comment extends Model<Comment, CommentCreationAttrs> {
   id: number;
 
   @Column({
-    type: DataType.STRING,
+    type: DataType.STRING(8000),
     allowNull: false,
   })
   content: string;

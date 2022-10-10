@@ -22,6 +22,11 @@ export class ArticlesController {
     return this.articleService.getOneById(params.id);
   }
 
+  @Get('category/:id')
+  getArticlesByCategory(@Param() params) {
+    return this.articleService.getByCategoryId(params.id);
+  }
+
   @Get()
   getAll() {
     return this.articleService.getAll();
