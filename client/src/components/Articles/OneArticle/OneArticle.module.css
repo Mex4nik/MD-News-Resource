@@ -6,9 +6,12 @@
     padding-bottom: 1rem;
 }
 
-.dateTime {
+.info {
     padding-bottom: 1rem;
     color: gray;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .content {
@@ -19,6 +22,10 @@
 .content__text {
     text-align: start;
     padding-bottom: 1rem;
+}
+
+.content__text p {
+    margin-bottom: 1rem;
 }
 
 .image {

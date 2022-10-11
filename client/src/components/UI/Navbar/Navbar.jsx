@@ -22,7 +22,7 @@ export default function Navbar() {
 		<div className={classes.navbar}>
 			<div className={classes.navbar__links}>
 				<Link to="/articles">Home</Link>
-				{/* <Link to="/about">About site</Link> */}
+				{isAuth ? <Link to="/create-article">Create Article</Link> : ''}
 			</div>
 			<div className={classes.navbar__controls}>
 				{isAuth

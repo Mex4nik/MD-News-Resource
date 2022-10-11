@@ -26,4 +26,14 @@ export default class ArticleService {
         const response = await axios.get(`${APIHost}/comments/article/${id}`);
         return response;
     }
+
+    static async createArticle(token, body) {
+        debugger;
+        const response = await axios.post(`${APIHost}/articles`, body, {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		});
+        return response;
+    }
 }

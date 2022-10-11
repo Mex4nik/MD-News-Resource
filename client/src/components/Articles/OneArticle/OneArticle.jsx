@@ -5,6 +5,8 @@ import Loader from '../../UI/Loader/Loader';
 import ArticleService from '../../../API/ArticlesService';
 import classes from './OneArticle.module.css'
 import { APIHost } from '../../../API/APISettings';
+import Select from '../../UI/Select/Select';
+import TranslationService, { availableLanguages } from '../../../API/TranslationAPI';
 // import { convertDate } from '../../../utils/convertDate';
 
 const OneArticle = () => {
@@ -13,6 +15,7 @@ const OneArticle = () => {
     const [isComLoading, setIsComLoading] = useState(true);
     const [article, setArticle] = useState({});
     const [comments, setComments] = useState([]);
+    const [currentLanguage, setCurrentLanguage] = useState('en');
 
     const fetchArticle = async (id) => {
         const response = await ArticleService.getById(id);
@@ -48,17 +51,33 @@ const OneArticle = () => {
         return date.toLocaleString(browserLanguage, localDateOptions);
     }
 
+    const translate = async (event) => {
+        setIsLoading(true);
+        debugger
+        const langToTranslate = event.target.value;
+        let { title, content } = article;
+        // translate title 
+        const translatedTitleRes = await TranslationService.translate(title, langToTranslate);
+        title = translatedTitleRes.data.translatedText
+        // translate content
+        const translatedContentRes = await TranslationService.translate(content, langToTranslate);
+        content = translatedContentRes.data.translatedText
+        setArticle({...article, title, content})
+        setIsLoading(false)
+    }
+
     return (
         <div className={classes.wrapper}>
             <h1 className={classes.title}>{article.title}</h1>
-            <div className={classes.dateTime}>
+            <div className={classes.info}>
                 <span>{convertDateToLocal(article.updatedAt)}</span>
+                <Select label='Test' selectedValue='en' selectedName='English' options={availableLanguages} onChange={translate} />
             </div>
             {isLoading 
                 ? <Loader/>
                 : <div className={classes.content}>
                     <div className={classes.content__text}>
-                        {article.content}
+                        {article.content.split('\n\n').map((text, idx) => <p key={idx}>{text}</p>)}
                     </div> 
                     <img
                         src={`${APIHost}/${article.image}`}

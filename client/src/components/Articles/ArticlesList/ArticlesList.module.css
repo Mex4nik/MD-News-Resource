@@ -3,4 +3,5 @@
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: space-evenly;
+    padding-bottom: 2rem;
 }
