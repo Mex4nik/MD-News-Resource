@@ -12,7 +12,6 @@ import { Article } from '../articles/articles.model';
 
 interface CommentCreationAttrs {
   content: string;
-  likes: number;
   articleId: number;
   userId: number;
 }
@@ -32,6 +31,12 @@ export class Comment extends Model<Comment, CommentCreationAttrs> {
     allowNull: false,
   })
   content: string;
+
+  @Column({
+    type: DataType.INTEGER,
+    defaultValue: 0,
+  })
+  likes: number;
 
   @ForeignKey(() => Article)
   @Column({ type: DataType.INTEGER })

@@ -7,7 +7,10 @@ import classes from './OneArticle.module.css'
 import { APIHost } from '../../../API/APISettings';
 import Select from '../../UI/Select/Select';
 import TranslationService, { availableLanguages } from '../../../API/TranslationAPI';
-// import { convertDate } from '../../../utils/convertDate';
+import { convertDateToLocal } from '../../../utils/convertDate';
+import CommentsList from '../../Comments/CommentsList/CommentsList';
+import CreateComment from '../../Comments/CreateComment/CreateComment';
+import CommentsService from '../../../API/CommentsService';
 
 const OneArticle = () => {
     const params = useParams();
@@ -24,7 +27,7 @@ const OneArticle = () => {
     }
 
     const fetchComments = async (id) => {
-        const response = await ArticleService.getCommentsByArticleId(id);
+        const response = await CommentsService.getCommentsByArticleId(id);
         setComments(response.data)
         setIsComLoading(false);
     }
@@ -33,23 +36,6 @@ const OneArticle = () => {
         fetchArticle(params.id)
         fetchComments(params.id)
     }, [])
-
-    const convertDateToLocal = (initDate) => {
-        if (!initDate) return '';
-        const date = new Date(initDate);
-
-        const browserLanguage = navigator.language;
-        const localDateOptions = {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-        };
-
-        return date.toLocaleString(browserLanguage, localDateOptions);
-    }
 
     const translate = async (event) => {
         setIsLoading(true);
@@ -87,19 +73,11 @@ const OneArticle = () => {
                   </div>
             }
             <h1>Comments: {comments.length}</h1>
+            <CreateComment callback={fetchComments} />
+            <hr className={classes.delimer} />
             {isComLoading
                 ? <Loader/>
-                : <div className={classes.comments}>
-                    {comments.map((comm) => 
-                        <div key={comm.id} className={classes.comment__wrapper}>
-                            <div className={classes.comment__wrapper__userdata}>
-                                <span className={classes.comment__wrapper__userdata__username}>{comm.author.username}</span>
-                                <span className={classes.comment__wrapper__userdata__date}>{convertDateToLocal(comm.updatedAt)}</span>
-                            </div>
-                            <span className={classes.comment__wrapper__content}>{comm.content}</span>
-                        </div>
-                    )}
-                  </div> 
+                : <CommentsList comments={comments} />
             }
         </div>
     );

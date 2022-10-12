@@ -7,7 +7,7 @@ import Button from "../components/UI/Button/Button";
 import Input from "../components/UI/Input/Input";
 import Select from "../components/UI/Select/Select";
 import Textarea from "../components/UI/Textarea/Textarea";
-import classes from "./../components/CreateArticle/CreateArticle.module.css";
+import classes from "./../components/Articles/CreateArticle/CreateArticle.module.css";
 
 const CreateArticle = () => {
 	const [categories, setCategories] = useState([]);

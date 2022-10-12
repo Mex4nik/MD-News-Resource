@@ -1,0 +1,16 @@
+.wrapper {
+    padding: 1rem;
+    border: 1px solid #28a745;
+    border-radius: 0.25rem;
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+}
+
+.wrapper textarea {
+    height: 7rem;
+    resize: none;
+}
+
+.controls {
+    text-align: end;
+}

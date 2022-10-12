@@ -1,5 +1,4 @@
 import OneArticle from "../components/Articles/OneArticle/OneArticle";
-import About from "../pages/About"
 import Articles from "../pages/Articles";
 import CreateArticle from "../pages/CreateArticle";
 import Login from "../pages/Login"

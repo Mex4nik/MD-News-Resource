@@ -1,0 +1,26 @@
+.comment__wrapper {
+	margin-top: 0.5rem;
+	padding: 1rem;
+	border: 1px solid #28a745;
+	border-radius: 0.25rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.comment__wrapper__userdata {
+	border-bottom: 1px solid gray;
+	padding-bottom: 0.1rem;
+	width: fit-content;
+}
+
+.comment__wrapper__userdata__username {
+	padding-right: 0.5rem;
+}
+
+.comment__wrapper__userdata__date {
+	color: gray;
+}
+
+.comment__wrapper__content {
+	margin-top: 0.5rem;
+}

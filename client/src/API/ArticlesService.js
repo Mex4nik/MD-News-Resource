@@ -22,13 +22,7 @@ export default class ArticleService {
         return response;
     }
 
-    static async getCommentsByArticleId(id) {
-        const response = await axios.get(`${APIHost}/comments/article/${id}`);
-        return response;
-    }
-
     static async createArticle(token, body) {
-        debugger;
         const response = await axios.post(`${APIHost}/articles`, body, {
 			headers: {
 				Authorization: `Bearer ${token}`,

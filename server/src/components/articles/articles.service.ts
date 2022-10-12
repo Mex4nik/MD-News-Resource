@@ -19,6 +19,7 @@ export class ArticlesService {
   async getByCategoryId(categoryId) {
     const articles = await this.articleRepository.findAll({
       where: { categoryId },
+      order: [['updatedAt', 'DESC']],
       include: { all: true },
     });
     return articles;
@@ -26,6 +27,7 @@ export class ArticlesService {
 
   async getAll() {
     const articles = await this.articleRepository.findAll({
+      order: [['updatedAt', 'DESC']],
       include: { all: true },
     });
     return articles;
