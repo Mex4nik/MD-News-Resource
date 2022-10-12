@@ -4,7 +4,7 @@ import classes from './ArticlesList.module.css'
 
 const ArticlesList = ({ articles, categories }) => {
 	if (!articles.length) {
-		return <h1 style={{ textAlign: "center" }}>articles not found!</h1>;
+		return <h1 style={{ textAlign: "center" }}>Articles not found!</h1>;
 	}
 
     const currentArticleCategory = (articleId, categories) => {

@@ -17,7 +17,7 @@ export class ArticlesService {
   }
 
   async getByCategoryId(categoryId) {
-    const articles = await this.articleRepository.findOne({
+    const articles = await this.articleRepository.findAll({
       where: { categoryId },
       include: { all: true },
     });
