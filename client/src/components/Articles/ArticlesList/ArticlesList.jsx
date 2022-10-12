@@ -15,7 +15,7 @@ const ArticlesList = ({ articles, categories }) => {
 	return (
 		<div className={classes.list}>
 			{articles.map((article) => (
-				<ArticleItem key={article.id} article={article} category={currentArticleCategory(article.id, categories)} />
+				<ArticleItem key={article.id} article={article} category={currentArticleCategory(article.category.id, categories)} />
 			))}
 		</div>
 	);

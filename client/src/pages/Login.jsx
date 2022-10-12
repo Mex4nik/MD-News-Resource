@@ -24,8 +24,8 @@ export default function Login() {
     } else {
       const token = login.data.token;
       const user = await UsersService.getUserByEmail(token, body.email);
-      localStorage.setItem('username', user.data.username)  
-
+      localStorage.setItem('username', user.data.username);
+      localStorage.setItem('email', body.email);
       setIsAuth(true)
       localStorage.setItem('auth', token)  
     }

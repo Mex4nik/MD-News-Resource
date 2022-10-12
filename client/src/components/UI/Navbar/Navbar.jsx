@@ -12,6 +12,8 @@ export default function Navbar() {
 	const logout = () => {
 		setIsAuth(false);
 		localStorage.removeItem("auth");
+		localStorage.removeItem("username");
+		localStorage.removeItem("email");  
 	};
 
 	const getUsername = () => {
