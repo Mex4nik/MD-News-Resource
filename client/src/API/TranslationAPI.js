@@ -7,23 +7,23 @@ export const availableLanguages = [
 		value: "en",
 	},
 	{
-		name: "Ukrainian",
+		name: "Українська",
 		value: "uk",
 	},
 	{
-		name: "German",
+		name: "Deutsch",
 		value: "de",
 	},
 	{
-		name: "French",
+		name: "Français",
 		value: "fr",
 	},
 	{
-		name: "Japanese",
+		name: "日本語",
 		value: "ja",
 	},
 	{
-		name: "Chinese",
+		name: "中國人",
 		value: "zh",
 	}
 ];
