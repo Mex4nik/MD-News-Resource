@@ -1,23 +1,17 @@
 # master-degree-news-resource
 
-- Models
-- Roles
-1. Create role
+- How to run?
+1. Run Server
 ```
-{
-    "value": string,
-    "description": string
-}
+cd .\server\
+npm run start:dev
 ```
-
-- Registration: http://localhost:5000/auth/registration
-- Login: http://localhost:5000/auth/login
+2. Run Client
 ```
-{
-  "username": string,
-  "email": string,
-  "password": string
-}
+cd .\client\
+npm run start
 ```
-
-- APIs
+3. Run Translation API
+```
+docker run -ti --rm -p 5000:5000 libretranslate/libretranslate --load-only en,uk,de,fr,ja,zh
+```
