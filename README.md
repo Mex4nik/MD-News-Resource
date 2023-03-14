@@ -1,4 +1,4 @@
-# master-degree-news-resource
+# md-news-resource
 
 - How to run?
 1. Run Server
